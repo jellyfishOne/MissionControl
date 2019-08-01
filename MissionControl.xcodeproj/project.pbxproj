@@ -27,7 +27,7 @@
 		C932D0ED22F37F4400B540C7 /* Bill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bill.swift; sourceTree = "<group>"; };
 		C932D0F022F3845600B540C7 /* BillTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillTableViewController.swift; sourceTree = "<group>"; };
 		C932D0F422F3949200B540C7 /* BillDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BillDetailTableViewController.swift; path = "MissionControl/View Controller/BillDetailTableViewController.swift"; sourceTree = SOURCE_ROOT; };
-		C932D0F622F3A29300B540C7 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatePickerTableViewCell.swift; path = "MissionControl/View Controller/DatePickerTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
+		C932D0F622F3A29300B540C7 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatePickerTableViewCell.swift; path = MissionControl/DatePickerTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +60,7 @@
 		C932D0DA22F37F3000B540C7 /* MissionControl */ = {
 			isa = PBXGroup;
 			children = (
+				C932D0F622F3A29300B540C7 /* DatePickerTableViewCell.swift */,
 				C932D0F222F3846500B540C7 /* View Controller */,
 				C932D0EF22F37FA900B540C7 /* Model */,
 				C932D0DF22F37F3000B540C7 /* Main.storyboard */,
@@ -75,8 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				C932D0ED22F37F4400B540C7 /* Bill.swift */,
-				C932D0F422F3949200B540C7 /* BillDetailTableViewController.swift */,
-				C932D0F622F3A29300B540C7 /* DatePickerTableViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -85,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				C932D0F022F3845600B540C7 /* BillTableViewController.swift */,
+				C932D0F422F3949200B540C7 /* BillDetailTableViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";

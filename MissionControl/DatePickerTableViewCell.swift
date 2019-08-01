@@ -8,25 +8,25 @@
 
 import UIKit
 
-open class DatePickerTableViewCell: UITableViewCell {
+class DatePickerTableViewCell: UITableViewCell {
 
     let picker = UIDatePicker()
-    open override func awakeFromNib() {
+    override func awakeFromNib() {
         super.awakeFromNib()
         picker.datePickerMode = .date
     }
-    open override var canBecomeFirstResponder: Bool {
+    override var canBecomeFirstResponder: Bool {
         return true
     }
     
-    open override var canResignFirstResponder: Bool {
+    override var canResignFirstResponder: Bool {
         return true
     }
     
-    open override var inputView: UIView? {
+    override var inputView: UIView? {
         return picker
     }
-    open override func setSelected(_ selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
 

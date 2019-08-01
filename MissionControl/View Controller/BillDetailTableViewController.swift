@@ -19,6 +19,17 @@ class BillDetailTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // Dismiss keyboard when user taps on the screen
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    // Dismiss keyboard when user taps or drags screen
+    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer)
+    {
+        view.endEditing(true)
+        gestureRecognizer.cancelsTouchesInView = false
+        tableView.keyboardDismissMode = .onDrag
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
