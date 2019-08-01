@@ -16,8 +16,15 @@ struct Bill {
     var amoutDue: Double
     var paymentHistory: [PaymentHistory]
     
-    // Create sample bills
+    // Date formatter
+    static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        return formatter
+    }()
     
+    // Create sample bills
     static func populateBills() -> [Bill]{
         let sampleBills = [
             Bill(name: "Bill 1", upcomingPaymentDate: Date(), isAutoPayment: true, isPaid: true, amoutDue: 20.0, paymentHistory: [PaymentHistory]()),

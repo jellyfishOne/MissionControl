@@ -42,13 +42,10 @@ class BillTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "BillListIdentifier", for: indexPath)
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
-        
         // Configure the cell...
         let bill = bills[indexPath.row]
         cell.textLabel?.text = bill.name
-        cell.detailTextLabel?.text = dateFormatter.string(from: bill.upcomingPaymentDate)
+        cell.detailTextLabel?.text = Bill.dateFormatter.string(from: bill.upcomingPaymentDate)
 
         return cell
     }
