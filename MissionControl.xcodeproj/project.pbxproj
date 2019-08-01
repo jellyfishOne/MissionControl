@@ -56,11 +56,11 @@
 		C932D0DA22F37F3000B540C7 /* MissionControl */ = {
 			isa = PBXGroup;
 			children = (
-				C932D0DB22F37F3000B540C7 /* AppDelegate.swift */,
-				C932D0DF22F37F3000B540C7 /* Main.storyboard */,
-				C932D0E222F37F3100B540C7 /* Assets.xcassets */,
 				C932D0F222F3846500B540C7 /* View Controller */,
 				C932D0EF22F37FA900B540C7 /* Model */,
+				C932D0DF22F37F3000B540C7 /* Main.storyboard */,
+				C932D0DB22F37F3000B540C7 /* AppDelegate.swift */,
+				C932D0E222F37F3100B540C7 /* Assets.xcassets */,
 				C932D0E422F37F3100B540C7 /* LaunchScreen.storyboard */,
 				C932D0E722F37F3100B540C7 /* Info.plist */,
 			);
