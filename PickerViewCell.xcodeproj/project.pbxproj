@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		C972773122F4C2AD00E81ABA /* PickerViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = C972772F22F4C2AD00E81ABA /* PickerViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C972773922F4C31400E81ABA /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C972773822F4C31400E81ABA /* DatePickerTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C972772C22F4C2AD00E81ABA /* PickerViewCell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PickerViewCell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C972772F22F4C2AD00E81ABA /* PickerViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerViewCell.h; sourceTree = "<group>"; };
 		C972773022F4C2AD00E81ABA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C972773822F4C31400E81ABA /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,8 +50,17 @@
 			children = (
 				C972772F22F4C2AD00E81ABA /* PickerViewCell.h */,
 				C972773022F4C2AD00E81ABA /* Info.plist */,
+				C972773722F4C30100E81ABA /* Classes */,
 			);
 			path = PickerViewCell;
+			sourceTree = "<group>";
+		};
+		C972773722F4C30100E81ABA /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				C972773822F4C31400E81ABA /* DatePickerTableViewCell.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C972773922F4C31400E81ABA /* DatePickerTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
