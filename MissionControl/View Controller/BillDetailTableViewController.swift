@@ -13,6 +13,7 @@ class BillDetailTableViewController: UITableViewController {
 
     
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var paidLabel: UILabel!
     let datePicker = UIDatePicker()
     
     override func viewDidLoad() {
@@ -43,7 +44,12 @@ class BillDetailTableViewController: UITableViewController {
                 _ = cell.becomeFirstResponder()
                
             }
-            
+        }  else if let cell = tableView.cellForRow(at: indexPath) as? IsPaidPickerTableViewCell {
+            cell.delegate = self
+            cell.dataSource = self
+            if !cell.isFirstResponder {
+                _ = cell.becomeFirstResponder()
+            }
         }
     }
     /*
@@ -114,4 +120,40 @@ extension BillDetailTableViewController: DatePickerTableCellDelegate {
     func onDatePickerOpen(_ cell: DatePickerTableViewCell){
         
     }
+}
+
+// MARK: - IsPaidPickerDataSource
+
+extension BillDetailTableViewController: PickerTableCellDataSource {
+    
+    public func numberOfComponents(in pickerView: UIPickerView, forCell cell: IsPaidPickerTableViewCell) -> Int {
+        return 1
+    }
+    
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int, forCell cell: IsPaidPickerTableViewCell) -> Int {
+        return 2
+    }
+    
+}
+
+// MARK: - PickerTableCellDelegate
+extension BillDetailTableViewController: PickerTableCellDelegate {
+    
+    func onPickerOpen(_ cell: IsPaidPickerTableViewCell) {
+        paidLabel.text = label.text!.isEmpty ? "YES" : paidLabel.text
+        paidLabel.textColor = UIColor.red
+    }
+    
+    func onPickerClose(_ cell: IsPaidPickerTableViewCell) {
+        paidLabel.textColor = UIColor.gray
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int, forCell cell: IsPaidPickerTableViewCell) -> String? {
+        return row == 0 ? "YES" : "NO"
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int, forCell cell: IsPaidPickerTableViewCell) {
+        paidLabel.text = row == 0 ? "YES" : "NO"
+    }
+    
 }

@@ -93,7 +93,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="PWf-LO-nqQ">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="PWf-LO-nqQ" customClass="IsPaidPickerTableViewCell" customModule="PickerViewCell">
                                         <rect key="frame" x="0.0" y="72" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PWf-LO-nqQ" id="fKX-pM-Nvv">
@@ -129,6 +129,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="label" destination="occ-aO-Lbi" id="7KZ-dj-hLi"/>
+                        <outlet property="paidLabel" destination="LTI-Vj-HcY" id="0xD-pg-KgJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nHQ-Yt-RKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
