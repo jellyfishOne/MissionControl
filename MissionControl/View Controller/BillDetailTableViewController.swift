@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import PickerViewCell
 
 class BillDetailTableViewController: UITableViewController {
 
+    
+    @IBOutlet weak var label: UILabel!
     let datePicker = UIDatePicker()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,11 +38,13 @@ class BillDetailTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? DatePickerTableViewCell {
+            cell.delegate = self
             if !cell.isFirstResponder {
                 _ = cell.becomeFirstResponder()
+               
             }
+            
         }
-
     }
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -94,5 +100,18 @@ class BillDetailTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+}
 
+// MARK:  - DatePickerTableCellDelegate
+
+extension BillDetailTableViewController: DatePickerTableCellDelegate {
+    
+    func onDateChange(_ sender: UIDatePicker, cell: DatePickerTableViewCell){
+        label.text = Bill.dateFormatter.string(from: sender.date)
+    }
+    
+    func onDatePickerOpen(_ cell: DatePickerTableViewCell){
+        
+    }
 }

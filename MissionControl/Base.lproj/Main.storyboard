@@ -127,6 +127,9 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uKw-fu-lI6"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="saU-jN-XGT"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="label" destination="occ-aO-Lbi" id="7KZ-dj-hLi"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nHQ-Yt-RKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
