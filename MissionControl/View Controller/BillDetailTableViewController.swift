@@ -15,6 +15,7 @@ class BillDetailTableViewController: UITableViewController {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var paidLabel: UILabel!
     let datePicker = UIDatePicker()
+    let isPaidYesOrNoArray = ["YES", "NO", "MAYBE"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,7 @@ class BillDetailTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //tableView.deselectRow(at: indexPath, animated: true)
         if let cell = tableView.cellForRow(at: indexPath) as? DatePickerTableViewCell {
             cell.delegate = self
             if !cell.isFirstResponder {
@@ -131,7 +133,7 @@ extension BillDetailTableViewController: PickerTableCellDataSource {
     }
     
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int, forCell cell: IsPaidPickerTableViewCell) -> Int {
-        return 2
+        return isPaidYesOrNoArray.count
     }
     
 }
@@ -140,7 +142,7 @@ extension BillDetailTableViewController: PickerTableCellDataSource {
 extension BillDetailTableViewController: PickerTableCellDelegate {
     
     func onPickerOpen(_ cell: IsPaidPickerTableViewCell) {
-        paidLabel.text = label.text!.isEmpty ? "YES" : paidLabel.text
+        paidLabel.text = paidLabel.text!.isEmpty ? "YES" : paidLabel.text
         paidLabel.textColor = UIColor.red
     }
     
@@ -149,11 +151,11 @@ extension BillDetailTableViewController: PickerTableCellDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int, forCell cell: IsPaidPickerTableViewCell) -> String? {
-        return row == 0 ? "YES" : "NO"
+        return isPaidYesOrNoArray[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int, forCell cell: IsPaidPickerTableViewCell) {
-        paidLabel.text = row == 0 ? "YES" : "NO"
+        paidLabel.text = isPaidYesOrNoArray[row]
     }
     
 }
