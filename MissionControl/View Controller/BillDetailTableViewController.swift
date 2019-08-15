@@ -39,7 +39,7 @@ class BillDetailTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //tableView.deselectRow(at: indexPath, animated: true)
+        //TODO tableView.deselectRow(at: indexPath, animated: true)
         if let cell = tableView.cellForRow(at: indexPath) as? DatePickerTableViewCell {
             cell.delegate = self
             if !cell.isFirstResponder {
