@@ -27,6 +27,9 @@ class BillTableViewController: UITableViewController {
         bills = Bill.populateBills()
     }
 
+    @IBAction func unwindToBillTableViewController(segue: UIStoryboardSegue) {
+        //TODO save data
+    }
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {

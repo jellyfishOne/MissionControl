@@ -81,7 +81,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Bill Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7d4-OF-lfz">
                                                     <rect key="frame" x="20" y="0.0" width="374" height="44"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
@@ -130,9 +130,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount Due" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3P-Ch-65X">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount Due" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3P-Ch-65X">
                                                     <rect key="frame" x="20" y="14" width="96" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -140,14 +139,21 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$200.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sFN-0Q-1fX">
                                                     <rect key="frame" x="20" y="9" width="374" height="30"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad" smartInsertDeleteType="no"/>
+                                                    <connections>
+                                                        <action selector="checkMaxAmountDueCharacters:" destination="4DS-qg-Jdb" eventType="editingChanged" id="CRX-dH-gq6"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="h3P-Ch-65X" secondAttribute="bottom" constant="4.5" id="3yH-ob-FJA"/>
+                                                <constraint firstItem="h3P-Ch-65X" firstAttribute="top" secondItem="inS-f3-GYc" secondAttribute="topMargin" constant="3" id="80w-JB-Deh"/>
                                                 <constraint firstAttribute="trailing" secondItem="sFN-0Q-1fX" secondAttribute="trailing" constant="20" id="ejs-7k-llh"/>
                                                 <constraint firstItem="sFN-0Q-1fX" firstAttribute="top" secondItem="inS-f3-GYc" secondAttribute="top" constant="9" id="ftI-9O-cCR"/>
+                                                <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="h3P-Ch-65X" secondAttribute="trailing" id="g8G-b9-tRN"/>
                                                 <constraint firstItem="sFN-0Q-1fX" firstAttribute="leading" secondItem="inS-f3-GYc" secondAttribute="leading" constant="20" id="jXD-op-xMx"/>
+                                                <constraint firstItem="h3P-Ch-65X" firstAttribute="leading" secondItem="inS-f3-GYc" secondAttribute="leadingMargin" id="q0j-ho-2Te"/>
                                                 <constraint firstAttribute="bottom" secondItem="sFN-0Q-1fX" secondAttribute="bottom" constant="10.5" id="tiv-MJ-NCZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -224,15 +230,28 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Bill" largeTitleDisplayMode="never" id="ihb-1x-GqI">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uKw-fu-lI6"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="saU-jN-XGT"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uKw-fu-lI6">
+                            <connections>
+                                <segue destination="ydh-df-ArS" kind="unwind" unwindAction="unwindToBillTableViewControllerWithSegue:" id="dut-1H-Rsa"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="saU-jN-XGT">
+                            <connections>
+                                <segue destination="ydh-df-ArS" kind="unwind" identifier="saveBillUnwind" unwindAction="unwindToBillTableViewControllerWithSegue:" id="X29-xm-OIh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="amountDueTextField" destination="sFN-0Q-1fX" id="V3N-o3-22d"/>
+                        <outlet property="billNameTextField" destination="7d4-OF-lfz" id="ziv-AM-0lI"/>
                         <outlet property="label" destination="occ-aO-Lbi" id="7KZ-dj-hLi"/>
                         <outlet property="paidLabel" destination="LTI-Vj-HcY" id="0xD-pg-KgJ"/>
+                        <outlet property="pastPaidAmountLabel" destination="ust-2H-nhU" id="iRV-5R-Ef7"/>
+                        <outlet property="pastPaymentDateLabel" destination="4r1-LF-qyj" id="w8S-iA-aY6"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nHQ-Yt-RKd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ydh-df-ArS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2044.9275362318842" y="152.67857142857142"/>
         </scene>

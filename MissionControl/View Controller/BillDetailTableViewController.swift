@@ -9,25 +9,48 @@
 import UIKit
 import PickerViewCell
 
+//TODO format amount due
+//TODO User should not be able to save a new item with an empty variable
+//TODO Date label should start up with todays date for new bill date
 class BillDetailTableViewController: UITableViewController {
 
-    
+    @IBOutlet weak var billNameTextField: UITextField!
+    //TODO update label name
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var amountDueTextField: UITextField!
     @IBOutlet weak var paidLabel: UILabel!
+    
+    @IBOutlet weak var pastPaymentDateLabel: UILabel!
+    @IBOutlet weak var pastPaidAmountLabel: UILabel!
+    
     let datePicker = UIDatePicker()
-    let isPaidYesOrNoArray = ["YES", "NO", "MAYBE"]
+    var bill: Bill?
+    var isAutoPayment = false
+    var upcomingDate = Date()
+    let maxLength = 20
+    let isPaidYesOrNoArray = ["YES", "NO"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         // Dismiss keyboard when user taps on the screen
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        guard segue.identifier == "saveBillUnwind" else { return }
+        
+        let name = billNameTextField.text
+        let upcomingPaymentDate = upcomingDate
+        if( paidLabel.text == "YES"){
+            isAutoPayment = true
+        }
+        let amountDue = Double(amountDueTextField.text!)
+    
+        bill = Bill(name: name!, upcomingPaymentDate: upcomingPaymentDate, isPaid: isAutoPayment, amoutDue: amountDue!, paymentHistory: [PaymentHistory]())
+        
     }
     
     // Dismiss keyboard when user taps or drags screen
@@ -38,6 +61,20 @@ class BillDetailTableViewController: UITableViewController {
         tableView.keyboardDismissMode = .onDrag
     }
 
+    // Limits the amount of characters the user can enter
+    @IBAction func checkMaxAmountDueCharacters(_ sender: UITextField){
+        if (sender.text!.count > maxLength){
+            sender.deleteBackward()
+        }
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        //TODO if payment history is empty, only returns one section
+        //TODO Else it returns two sections, and section updates labels
+        //with most recent payment.
+        return 2
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if let cell = tableView.cellForRow(at: indexPath) as? DatePickerTableViewCell {
@@ -116,6 +153,7 @@ class BillDetailTableViewController: UITableViewController {
 extension BillDetailTableViewController: DatePickerTableCellDelegate {
     
     func onDateChange(_ sender: UIDatePicker, cell: DatePickerTableViewCell){
+        upcomingDate = sender.date
         label.text = Bill.dateFormatter.string(from: sender.date)
     }
     

@@ -11,7 +11,6 @@ import Foundation
 struct Bill {
     var name: String
     var upcomingPaymentDate: Date
-    var isAutoPayment: Bool
     var isPaid: Bool
     var amoutDue: Double
     var paymentHistory: [PaymentHistory]
@@ -26,11 +25,11 @@ struct Bill {
     // Create sample bills
     static func populateBills() -> [Bill]{
         let sampleBills = [
-            Bill(name: "Bill 1", upcomingPaymentDate: Date(), isAutoPayment: true, isPaid: true, amoutDue: 20.0, paymentHistory: [PaymentHistory]()),
-            Bill(name: "Bill 2", upcomingPaymentDate: Date(), isAutoPayment: true, isPaid: true, amoutDue: 20.0, paymentHistory: [PaymentHistory]()),
-            Bill(name: "Bill 3", upcomingPaymentDate: Date(), isAutoPayment: true, isPaid: true, amoutDue: 20.0, paymentHistory: [PaymentHistory]()),
-            Bill(name: "Bill 4", upcomingPaymentDate: Date(), isAutoPayment: true, isPaid: true, amoutDue: 20.0, paymentHistory: [PaymentHistory]()),
-            Bill(name: "Bill 5", upcomingPaymentDate: Date(), isAutoPayment: true, isPaid: true, amoutDue: 20.0, paymentHistory: [PaymentHistory]()),
+            Bill(name: "Bill 1", upcomingPaymentDate: Date(), isPaid: true, amoutDue: 20.0, paymentHistory: [PaymentHistory]()),
+            Bill(name: "Bill 2", upcomingPaymentDate: Date(), isPaid: true, amoutDue: 20.0, paymentHistory: [PaymentHistory]()),
+            Bill(name: "Bill 3", upcomingPaymentDate: Date(), isPaid: true, amoutDue: 20.0, paymentHistory: [PaymentHistory]()),
+            Bill(name: "Bill 4", upcomingPaymentDate: Date(), isPaid: true, amoutDue: 20.0, paymentHistory: [PaymentHistory]()),
+            Bill(name: "Bill 5", upcomingPaymentDate: Date(), isPaid: true, amoutDue: 20.0, paymentHistory: [PaymentHistory]()),
         ]
         return sampleBills
     }
