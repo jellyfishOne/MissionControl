@@ -86,10 +86,10 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="7d4-OF-lfz" secondAttribute="bottom" constant="-5" id="19u-ed-lgb"/>
-                                                <constraint firstItem="7d4-OF-lfz" firstAttribute="top" secondItem="C51-N5-9R7" secondAttribute="top" id="bAl-uz-cdz"/>
-                                                <constraint firstItem="7d4-OF-lfz" firstAttribute="trailing" secondItem="C51-N5-9R7" secondAttribute="trailingMargin" id="d8W-sV-nCI"/>
-                                                <constraint firstItem="7d4-OF-lfz" firstAttribute="leading" secondItem="C51-N5-9R7" secondAttribute="leadingMargin" id="jqN-Ob-Mqb"/>
+                                                <constraint firstItem="7d4-OF-lfz" firstAttribute="trailing" secondItem="C51-N5-9R7" secondAttribute="trailingMargin" id="lhS-Wk-oGj"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="7d4-OF-lfz" secondAttribute="bottom" constant="-5" id="r5M-y4-gFk"/>
+                                                <constraint firstItem="7d4-OF-lfz" firstAttribute="top" secondItem="C51-N5-9R7" secondAttribute="top" id="rZW-Xt-9nr"/>
+                                                <constraint firstItem="7d4-OF-lfz" firstAttribute="leading" secondItem="C51-N5-9R7" secondAttribute="leadingMargin" id="zAD-Rn-Czi"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -101,13 +101,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvQ-eX-vFQ">
-                                                    <rect key="frame" x="20" y="10.5" width="72" height="21"/>
+                                                    <rect key="frame" x="20" y="16.5" width="72" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="occ-aO-Lbi">
-                                                    <rect key="frame" x="352" y="10.5" width="42" height="22.5"/>
+                                                    <rect key="frame" x="352" y="10.5" width="42" height="28.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -130,27 +130,25 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="96Q-Dx-TM8">
-                                                    <rect key="frame" x="352" y="14.5" width="42" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Amount Due" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3P-Ch-65X">
+                                                    <rect key="frame" x="20" y="14" width="96" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount Due" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3P-Ch-65X">
-                                                    <rect key="frame" x="20" y="14.5" width="96" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$200.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sFN-0Q-1fX">
+                                                    <rect key="frame" x="20" y="9" width="374" height="30"/>
                                                     <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="96Q-Dx-TM8" firstAttribute="trailing" secondItem="inS-f3-GYc" secondAttribute="trailingMargin" id="FXT-sg-8C8"/>
-                                                <constraint firstItem="96Q-Dx-TM8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="h3P-Ch-65X" secondAttribute="trailing" constant="8" symbolic="YES" id="Jvd-Fi-sc3"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="96Q-Dx-TM8" secondAttribute="bottom" constant="4" id="NaJ-QI-NfS"/>
-                                                <constraint firstItem="h3P-Ch-65X" firstAttribute="leading" secondItem="inS-f3-GYc" secondAttribute="leadingMargin" id="WQg-td-Skb"/>
-                                                <constraint firstItem="96Q-Dx-TM8" firstAttribute="centerY" secondItem="inS-f3-GYc" secondAttribute="centerY" id="eeV-yp-9F7"/>
-                                                <constraint firstItem="96Q-Dx-TM8" firstAttribute="baseline" secondItem="h3P-Ch-65X" secondAttribute="baseline" id="gKo-En-fQl"/>
-                                                <constraint firstItem="96Q-Dx-TM8" firstAttribute="firstBaseline" secondItem="h3P-Ch-65X" secondAttribute="firstBaseline" id="yU5-07-2dY"/>
+                                                <constraint firstAttribute="trailing" secondItem="sFN-0Q-1fX" secondAttribute="trailing" constant="20" id="ejs-7k-llh"/>
+                                                <constraint firstItem="sFN-0Q-1fX" firstAttribute="top" secondItem="inS-f3-GYc" secondAttribute="top" constant="9" id="ftI-9O-cCR"/>
+                                                <constraint firstItem="sFN-0Q-1fX" firstAttribute="leading" secondItem="inS-f3-GYc" secondAttribute="leading" constant="20" id="jXD-op-xMx"/>
+                                                <constraint firstAttribute="bottom" secondItem="sFN-0Q-1fX" secondAttribute="bottom" constant="10.5" id="tiv-MJ-NCZ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -161,8 +159,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Payment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nv-eU-6Qe">
-                                                    <rect key="frame" x="20" y="14.5" width="107" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bill Paid" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3nv-eU-6Qe">
+                                                    <rect key="frame" x="20" y="14.5" width="60" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
