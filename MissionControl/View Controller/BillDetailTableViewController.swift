@@ -12,6 +12,7 @@ import PickerViewCell
 //TODO format amount due
 //TODO User should not be able to save a new item with an empty variable
 //TODO Date label should start up with todays date for new bill date
+//TODO bill due dates cannot be set in the past 
 class BillDetailTableViewController: UITableViewController {
 
     @IBOutlet weak var billNameTextField: UITextField!
@@ -22,7 +23,7 @@ class BillDetailTableViewController: UITableViewController {
     
     @IBOutlet weak var pastPaymentDateLabel: UILabel!
     @IBOutlet weak var pastPaidAmountLabel: UILabel!
-    
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     let datePicker = UIDatePicker()
     var bill: Bill?
     var isAutoPayment = false
@@ -32,6 +33,13 @@ class BillDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Save button is disabled when user is creating new bill
+        updateSaveButtonState()
+        
+        //Default label states
+        paidLabel.text = isPaidYesOrNoArray[1]
+        label.text = Bill.dateFormatter.string(from: Date())
         
         // Dismiss keyboard when user taps on the screen
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
@@ -49,9 +57,10 @@ class BillDetailTableViewController: UITableViewController {
         }
         let amountDue = Double(amountDueTextField.text!)
     
-        bill = Bill(name: name!, upcomingPaymentDate: upcomingPaymentDate, isPaid: isAutoPayment, amoutDue: amountDue!, paymentHistory: [PaymentHistory]())
+        bill = Bill(name: name!, upcomingPaymentDate: upcomingPaymentDate, isPaid: isAutoPayment, amountDue: amountDue!, paymentHistory: [PaymentHistory]())
         
     }
+    
     
     // Dismiss keyboard when user taps or drags screen
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer)
@@ -61,11 +70,17 @@ class BillDetailTableViewController: UITableViewController {
         tableView.keyboardDismissMode = .onDrag
     }
 
+    @IBAction func billNameEditingChanged(_ sender: UITextField) {
+        // Prevents a user from creating a Bill
+        // without a name
+        updateSaveButtonState()
+    }
     // Limits the amount of characters the user can enter
     @IBAction func checkMaxAmountDueCharacters(_ sender: UITextField){
         if (sender.text!.count > maxLength){
             sender.deleteBackward()
         }
+        updateSaveButtonState()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -91,61 +106,21 @@ class BillDetailTableViewController: UITableViewController {
             }
         }
     }
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
+    // Updates Save button depending on whether or not all categories have been
+    // completed by the user.
+    func updateSaveButtonState(){
+       
+        let billNameText = billNameTextField.text ?? ""
+        let amountDueText = amountDueTextField.text ?? ""
+    
+        if(!billNameText.isEmpty && !amountDueText.isEmpty){
+            saveButton.isEnabled = true
+            
+        } else {
+            saveButton.isEnabled = false
+        }
+    }
 }
 
 // MARK:  - DatePickerTableCellDelegate
@@ -153,6 +128,7 @@ class BillDetailTableViewController: UITableViewController {
 extension BillDetailTableViewController: DatePickerTableCellDelegate {
     
     func onDateChange(_ sender: UIDatePicker, cell: DatePickerTableViewCell){
+        sender.minimumDate = Date()
         upcomingDate = sender.date
         label.text = Bill.dateFormatter.string(from: sender.date)
     }

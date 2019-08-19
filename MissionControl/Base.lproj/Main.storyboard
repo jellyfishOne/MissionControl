@@ -83,6 +83,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="billNameEditingChanged:" destination="4DS-qg-Jdb" eventType="editingChanged" id="G4M-ZJ-2u8"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -248,6 +251,7 @@
                         <outlet property="paidLabel" destination="LTI-Vj-HcY" id="0xD-pg-KgJ"/>
                         <outlet property="pastPaidAmountLabel" destination="ust-2H-nhU" id="iRV-5R-Ef7"/>
                         <outlet property="pastPaymentDateLabel" destination="4r1-LF-qyj" id="w8S-iA-aY6"/>
+                        <outlet property="saveButton" destination="saU-jN-XGT" id="SwM-hs-Gbn"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nHQ-Yt-RKd" userLabel="First Responder" sceneMemberID="firstResponder"/>

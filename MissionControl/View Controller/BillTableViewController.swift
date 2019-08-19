@@ -11,14 +11,10 @@ import UIKit
 class BillTableViewController: UITableViewController {
     
     // Holds array of Bills
-    
     var bills = [Bill]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
         // Display an Edit button in the navigation bar for this view controller.
         self.navigationItem.leftBarButtonItem = self.editButtonItem
