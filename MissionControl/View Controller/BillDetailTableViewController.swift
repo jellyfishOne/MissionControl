@@ -9,11 +9,7 @@
 import UIKit
 import PickerViewCell
 
-//TODO format amount due
-//TODO User should not be able to save a new item with an empty variable
-//TODO Date label should start up with todays date for new bill date
-//TODO bill due dates cannot be set in the past 
-class BillDetailTableViewController: UITableViewController {
+class BillDetailTableViewController: UITableViewController, UITextFieldDelegate {
 
     @IBOutlet weak var billNameTextField: UITextField!
     //TODO update label name
@@ -31,8 +27,13 @@ class BillDetailTableViewController: UITableViewController {
     let maxLength = 20
     let isPaidYesOrNoArray = ["YES", "NO"]
     
+    // MARK: - viewDidLoad functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Make amountDueTextField delegate
+        amountDueTextField.delegate = self
         
         //Save button is disabled when user is creating new bill
         updateSaveButtonState()
@@ -45,6 +46,7 @@ class BillDetailTableViewController: UITableViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
     }
+    // MARK: - Prepare for segue
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -61,6 +63,7 @@ class BillDetailTableViewController: UITableViewController {
         
     }
     
+    // MARK: - @Obj functions
     
     // Dismiss keyboard when user taps or drags screen
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer)
@@ -70,6 +73,8 @@ class BillDetailTableViewController: UITableViewController {
         tableView.keyboardDismissMode = .onDrag
     }
 
+    // MARK: - @IBAction functions
+    
     @IBAction func billNameEditingChanged(_ sender: UITextField) {
         // Prevents a user from creating a Bill
         // without a name
@@ -82,6 +87,8 @@ class BillDetailTableViewController: UITableViewController {
         }
         updateSaveButtonState()
     }
+    
+    // MARK: - table view functions
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         //TODO if payment history is empty, only returns one section
@@ -107,6 +114,8 @@ class BillDetailTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Helper functions
+    
     // Updates Save button depending on whether or not all categories have been
     // completed by the user.
     func updateSaveButtonState(){
@@ -120,6 +129,53 @@ class BillDetailTableViewController: UITableViewController {
         } else {
             saveButton.isEnabled = false
         }
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // User pressed the delete-key to remove a character, this is always valid, return true to allow change
+        if string.isEmpty { return true }
+        
+        // Build the full current string: TextField right now only contains the
+        // previous valid value. Use provided info to build up the new version.
+        // Can't just concat the two strings because the user might've moved the
+        // cursor and delete something in the middle.
+        let currentText = textField.text ?? ""
+        let replacementText = (currentText as NSString).replacingCharacters(in: range, with: string)
+        
+        // Use our string extensions to check if the string is a valid double and
+        // only has the specified amount of decimal places.
+        return replacementText.isValidDouble(maxDecimalPlaces: 2)
+    }
+}
+
+// MARK:  - AmountDueTextField Delegate
+
+extension String {
+    func isValidDouble(maxDecimalPlaces: Int) -> Bool {
+        // Use NumberFormatter to check if we can turn the string into a number
+        // and to get the locale specific decimal separator.
+        let formatter = NumberFormatter()
+        formatter.allowsFloats = true // Default is true
+        let decimalSeparator = formatter.decimalSeparator ?? "."  // Gets the locale specific decimal separator. If for some reason there is none we assume "." is used as separator.
+        
+        // Check if we can create a valid number. (The formatter creates a NSNumber, but
+        // every NSNumber is a valid double, so we're good!)
+        if formatter.number(from: self) != nil {
+            // Split our string at the decimal separator
+            let split = self.components(separatedBy: decimalSeparator)
+            
+            // Depending on whether there was a decimalSeparator we may have one
+            // or two parts now. If it is two then the second part is the one after
+            // the separator, aka the digits we care about.
+            // If there was no separator then the user hasn't entered a decimal
+            // number yet and we treat the string as empty, succeeding the check
+            let digits = split.count == 2 ? split.last ?? "" : ""
+            
+            // Finally check if we're <= the allowed digits
+            return digits.count <= maxDecimalPlaces
+        }
+        
+        return false // couldn't turn string into a valid number
     }
 }
 
@@ -173,3 +229,7 @@ extension BillDetailTableViewController: PickerTableCellDelegate {
     }
     
 }
+
+/*
+  credit to https://www.markusbodner.com/ 
+ */

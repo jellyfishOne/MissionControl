@@ -15,6 +15,7 @@
 		C932D0F122F3845600B540C7 /* BillTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C932D0F022F3845600B540C7 /* BillTableViewController.swift */; };
 		C932D0F522F3949200B540C7 /* BillDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C932D0F422F3949200B540C7 /* BillDetailTableViewController.swift */; };
 		C932D0F722F3A29300B540C7 /* DatePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C932D0F622F3A29300B540C7 /* DatePickerTableViewCell.swift */; };
+		C95B7663230DA42B0046616F /* README.swift in Sources */ = {isa = PBXBuildFile; fileRef = C95B7662230DA42B0046616F /* README.swift */; };
 		C972773B22F4C52C00E81ABA /* PickerViewCell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C972773A22F4C52C00E81ABA /* PickerViewCell.framework */; };
 		C972773C22F4C52C00E81ABA /* PickerViewCell.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C972773A22F4C52C00E81ABA /* PickerViewCell.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -44,6 +45,7 @@
 		C932D0F022F3845600B540C7 /* BillTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillTableViewController.swift; sourceTree = "<group>"; };
 		C932D0F422F3949200B540C7 /* BillDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BillDetailTableViewController.swift; path = "MissionControl/View Controller/BillDetailTableViewController.swift"; sourceTree = SOURCE_ROOT; };
 		C932D0F622F3A29300B540C7 /* DatePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatePickerTableViewCell.swift; path = MissionControl/DatePickerTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		C95B7662230DA42B0046616F /* README.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = README.swift; sourceTree = "<group>"; };
 		C972773A22F4C52C00E81ABA /* PickerViewCell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PickerViewCell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -63,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				C972773A22F4C52C00E81ABA /* PickerViewCell.framework */,
+				C95B7662230DA42B0046616F /* README.swift */,
 				C932D0DA22F37F3000B540C7 /* MissionControl */,
 				C932D0D922F37F3000B540C7 /* Products */,
 			);
@@ -185,6 +188,7 @@
 				C932D0DC22F37F3000B540C7 /* AppDelegate.swift in Sources */,
 				C932D0F522F3949200B540C7 /* BillDetailTableViewController.swift in Sources */,
 				C932D0F722F3A29300B540C7 /* DatePickerTableViewCell.swift in Sources */,
+				C95B7663230DA42B0046616F /* README.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
